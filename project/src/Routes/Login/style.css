@@ -1,0 +1,158 @@
+.container-login {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.box-right {
+    display: flex;
+    justify-content: center;
+    width: 35%;
+    height: 100vh;
+    background: #FEFEFE;
+}
+
+.container-box-right {
+    width: 100%;
+}
+
+.container-img-std {
+    text-align: center;
+    padding-top: 5em;
+    padding-bottom: 2em;
+}
+
+.container-img-std img {
+    max-width: 290px;
+    width: 100%;
+}
+
+.container-title {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+.msg-error p {
+    color: red;
+}
+
+.msg-sucess p {
+    color: green;
+}
+
+.box-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 0em 3em;
+}
+
+.box-input {
+    width: 100%;
+    position: relative;
+}
+
+.box-input label {
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    color: #BCBFC2;
+    font-weight: bold;
+    transition: 0.5s ease-in-out;
+    cursor: text;
+}
+
+.box-input .input:focus~label,
+.box-input .input:valid~label {
+    transform: translateY(-8px);
+    font-size: 10px;
+}
+
+.input {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #EEE;
+    background: #F3F3F3;
+}
+
+#single-input {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 5px 5px;
+}
+
+.input::placeholder {
+    color: #BCBFC2;
+}
+
+.form-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkbox-div {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap: 3px;
+}
+
+/* input[type="checkbox"] {
+    display: none;
+} */
+
+input[type="checkbox"] {
+    width: 21px;
+    height: 19px;
+    border-radius: 5px;
+    border: 1px solid #BCBFC2;
+    background: #F3F3F3;
+}
+
+
+.create-acount a {
+    color: #BCBFC2;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.container-btn {
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+}
+
+.container-btn button {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    border: 1px solid #BCBFC2;
+    background: #EEE;
+    transition: 0.5s;
+}
+
+.valid-btn button{
+    background-color: green;
+}
+
+.container-background {
+    width: 65%;
+    background-image: url(../../assets/img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+}
+
+.container-background p {
+    font-size: 45px;
+    color: #FEFEFE;
+    padding: 1em;
+}
+
