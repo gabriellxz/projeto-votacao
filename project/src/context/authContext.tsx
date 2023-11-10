@@ -12,7 +12,7 @@ const Context = createContext<ContextType>({})
 function AuthProvider({ children }: any) {
 
     const [autenticado, setAutenticado] = useState(false)
-    const [loading, setLoading] = useState(true)
+    // const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
@@ -24,7 +24,7 @@ function AuthProvider({ children }: any) {
                 setAutenticado(true)
             }
 
-            setLoading(false)
+            // setLoading(false)
         }
 
         getLogin()
@@ -42,9 +42,9 @@ function AuthProvider({ children }: any) {
 
     }
 
-    if (loading) {
-        return console.log("Carregando...")
-    }
+    // if (loading) {
+    //     return console.log("Carregando...")
+    // }
 
     return (
         <Context.Provider value={{ autenticado, signIn, logout }}>

@@ -4,7 +4,7 @@ import Login from './Routes/Login/login'
 import Cadastro from './Routes/Cadastro/cadastro'
 import Dashboard from './Routes/Dashboard/dashboard'
 import { AuthProvider } from './context/authContext'
-import { CustomRoutes } from './routesAdm'
+import { CustomRoutes } from './routesAdm.tsx'
 
 function App() {
 
