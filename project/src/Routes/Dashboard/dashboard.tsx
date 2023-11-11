@@ -4,9 +4,10 @@ import NotificationIcon from "../../componentsSVG/notification-icon/notification
 import logoElecao from '../../assets/img/eleicoes-logo.png'
 // import iconPerfil from '../../assets/img/icon-perfil.svg'
 import { useContext, useEffect } from 'react';
-import { Context, ContextType } from '../../context/authContext';
+import { Context } from '../../context/authContext';
 import { Link } from 'react-router-dom';
 import api from '../../config/apiConfig'
+import CardCandidato from '../../components/Card-candidato/card-candidato';
 
 export default function Dashboard() {
 
@@ -26,9 +27,7 @@ export default function Dashboard() {
         async function getCandidatos() {
             await api.get("/Candidatos", { headers })
                 .then((response) => {
-                    if (autenticado === true) {
-                        console.log(response)
-                    }
+                    console.log(response.data)
                 })
                 .catch((err) => {
                     console.log(err)
@@ -52,10 +51,15 @@ export default function Dashboard() {
                     </Link>
                 </div>
             </header>
-            <main>
+            <main className='main-dashboard'>
                 <section>
-                    <div>
-
+                    <div className='container-list-candidatos'>
+                        <CardCandidato/>
+                        <CardCandidato/>
+                        <CardCandidato/>
+                        <CardCandidato/>
+                        <CardCandidato/>
+                        <CardCandidato/>
                     </div>
                 </section>
             </main>
