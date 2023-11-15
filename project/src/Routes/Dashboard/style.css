@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     gap: 50px;
+    user-select: none;
 }
 
 .header-dashboard img {
@@ -43,15 +44,14 @@
 
 .main-dashboard {
     display: flex;
+    width: 100%;
     height: calc(100vh - 90px);
 }
 
-.container-list-candidatos {
+.section-dashboard {
     display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 1em;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .navbar-aside {

@@ -26,9 +26,6 @@ function Grid(props:Props) {
                     </ul>
                 </aside>
             }
-            <section>
-                <Outlet />
-            </section>
         </>
     )
 }

@@ -36,6 +36,9 @@ export default function Dashboard() {
             </header>
             <main className='main-dashboard'>
                 <Grid open={open}/> 
+                <section className='section-dashboard'>
+                    <Outlet/>
+                </section>
             </main>
         </>
     )

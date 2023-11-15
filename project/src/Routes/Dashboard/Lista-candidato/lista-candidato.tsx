@@ -1,3 +1,4 @@
+import './style.css'
 import { useEffect, useState } from "react"
 import api from '../../../config/apiConfig'
 import CardCandidato from "../../../components/Card-candidato/card-candidato"
