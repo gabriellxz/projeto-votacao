@@ -13,6 +13,15 @@ interface Endereco {
     uf?: string;
 }
 
+interface TypeStatus {
+    type: string;
+    mensagem?: string;
+    mensagemName?: string;
+    mensagemCidade?: string;
+    mensagemEstado?: string;
+    loading: boolean;
+}
+
 export default function CadastroCandidato() {
 
     const [endereco, SetEndereco] = useState<Endereco>({})
@@ -24,9 +33,11 @@ export default function CadastroCandidato() {
         cidade: "",
         estado: ""
     })
-    const [status, setStatus] = useState({
+    const [status, setStatus] = useState<TypeStatus>({
         type: "",
-        mensagem: "",
+        mensagemName: "",
+        mensagemCidade: "",
+        mensagemEstado: "",
         loading: false
     })
     const [cidade, setCidade] = useState("")
@@ -39,11 +50,6 @@ export default function CadastroCandidato() {
 
     async function getCep(e: any) {
         e.preventDefault()
-        setStatus({
-            type: "",
-            mensagem: "",
-            loading: true
-        })
 
         await axios.get<Endereco>(`https://viacep.com.br/ws/${valueInput.cep}/json/`)
             .then((response) => {
@@ -74,6 +80,14 @@ export default function CadastroCandidato() {
     async function handlePostForm(e: any) {
         e.preventDefault()
 
+        setStatus({
+            type: "",
+            mensagemName: "",
+            mensagemCidade: "",
+            mensagemEstado: "",
+            loading: true
+        })
+
         const formData = new FormData();
         formData.append("name", valueInput.name)
         formData.append("apelido", valueInput.apelido)
@@ -82,15 +96,36 @@ export default function CadastroCandidato() {
         formData.append("cidade", cidade)
         formData.append("estado", cidade)
         if (imagem) {
-            formData.append("imagem", imagem)
+            formData.append("images", imagem)
         }
 
         await api.post("/Candidatos", formData, { headers })
             .then((response) => {
                 console.log(response.data)
+                setStatus({
+                    type: "sucess",
+                    mensagemName: response.data,
+                    mensagemCidade: response.data,
+                    mensagemEstado: response.data,
+                    loading: false
+                })
             })
             .catch((err) => {
-                console.log(err)
+                if (err.response) {
+                    setStatus({
+                        type: "error",
+                        mensagemName: err.response.data.errors.body.name,
+                        mensagemCidade: err.response.data.errors.body.cidade,
+                        mensagemEstado: err.response.data.errors.body.estado,
+                        loading: false
+                    })
+                } else {
+                    setStatus({
+                        type: "error",
+                        mensagem: "Erro: Tente mais tarde...",
+                        loading: false
+                    })
+                }
             })
     }
 
@@ -104,23 +139,23 @@ export default function CadastroCandidato() {
                         </h1>
                         <div className="box-input-candidato">
                             <div className="single-input-candidato">
-                                <label>Nome</label>
-                                <input type="text" name="name" placeholder="Nome" onChange={handleValueInput} />
+                                {status.type === "error" ? <label className='msg-error'>{status.mensagemName}</label> : <label>Nome</label>}
+                                <input type="text" name="name" className={status.type === "error" ? "input-error" : "input-sucess"} placeholder="Nome" onChange={handleValueInput} />
                             </div>
                             <div className="single-input-candidato">
                                 <label>Apelido</label>
-                                <input type="text" name="apelido" placeholder="Apelido" onChange={handleValueInput} />
+                                <input type="text" name="apelido" className='input-sucess' placeholder="Apelido" onChange={handleValueInput} />
                             </div>
                         </div>
                         <div className="box-input-candidato">
                             <div className="single-input-candidato">
                                 <label>Partido</label>
-                                <input type="text" name="Partido" placeholder="Partido" onChange={handleValueInput} />
+                                <input type="text" name="Partido" className='input-sucess' placeholder="Partido" onChange={handleValueInput} />
                             </div>
                         </div>
                         <div className="box-input-candidato">
                             <div className="single-input-candidato">
-                                <input required id='input-cep' type="text" name="cep" placeholder="CEP" onChange={handleValueInput} />
+                                <input required id='input-cep' type="text" name="cep" className='input-sucess' placeholder="CEP" onChange={handleValueInput} />
                             </div>
                             <div className="single-input-candidato">
                                 <input type='button' onClick={getCep} value={"Buscar CEP"} id='button-cep' />
@@ -128,12 +163,12 @@ export default function CadastroCandidato() {
                         </div>
                         <div className="box-input-candidato">
                             <div className="single-input-candidato">
-                                <label>Cidade</label>
-                                <input type="text" name="cidade" placeholder="Cidade" value={cidade} />
+                                {status.type === "error" ? <label className='msg-error'>{status.mensagemCidade}</label> : <label>Cidade</label>}
+                                <input type="text" name="cidade" className={status.type === "error" ? "input-error" : "input-sucess"} placeholder="Cidade" value={cidade} />
                             </div>
                             <div className="single-input-candidato">
-                                <label>Estado</label>
-                                <input type="text" name="estado" placeholder="Estado" value={estado} />
+                                {status.type === "error" ? <label className='msg-error'>{status.mensagemEstado}</label> : <label>Estado</label>}
+                                <input type="text" name="estado" className={status.type === "error" ? "input-error" : "input-sucess"} placeholder="Estado" value={estado} />
                             </div>
                         </div>
                         <div className="box-input-candidato">

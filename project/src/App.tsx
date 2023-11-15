@@ -6,7 +6,7 @@ import { AuthProvider } from './context/authContext'
 import { CustomRoutes } from './routesAdm.tsx'
 import Dashboard from './Routes/Dashboard/dashboard.tsx'
 import ListaCandidato from './Routes/Dashboard/Lista-candidato/lista-candidato.tsx'
-import CadastroCandidato from './Routes/Dashboard/Cadastro_candiadato/cadastro-candidato.tsx'
+import CadastroCandidato from './Routes/Dashboard/Cadastro_candidato/cadastro-candidato.tsx'
 
 function App() {
 
@@ -24,9 +24,9 @@ function App() {
                 <Dashboard />
               </CustomRoutes>
             }>
-              {/* <Route index element={<ListaCandidato />} /> */}
+              <Route index element={<ListaCandidato />} />
               <Route path='listaCandidato' element={<ListaCandidato />} />
-              <Route index element={<CadastroCandidato />} />
+              {/* <Route index element={<CadastroCandidato />} /> */}
               <Route path='cadastrarCadidato' element={<CadastroCandidato/>} />
             </Route>
 
