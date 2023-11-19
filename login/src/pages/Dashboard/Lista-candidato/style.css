@@ -1,0 +1,26 @@
+.container-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container-list-candidatos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 1em;
+    gap: 20px;
+}
+
+.container-input-search {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-modal-candidato {
+    position: absolute;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0px 0px 100px #000;
+}
