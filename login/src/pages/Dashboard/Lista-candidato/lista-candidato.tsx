@@ -143,7 +143,7 @@ export default function ListaCandidato() {
             </div>
             <div className='container-list-candidatos'>
                 {
-                    candidato.map((item: typeCandidato) => (
+                    filtrarCandidatos.map((item: typeCandidato) => (
                         <CardCandidato candidato={item} key={item.id_candidato} />
                     ))
                 }
