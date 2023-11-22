@@ -4,6 +4,7 @@ import api from "../../../config/apiConfig"
 import axios from "axios"
 import logoEleicoes from '../../../assets/img/eleicoes-logo.png'
 import { useNavigate } from 'react-router-dom'
+import LoadingIcon from '../../../components/loading-icon/loading-icon'
 
 interface Endereco {
     cep?: string;
@@ -19,6 +20,7 @@ interface TypeStatus {
     mensagemName?: string;
     mensagemCidade?: string;
     mensagemEstado?: string;
+    mensagemCep?: string;
     loading: boolean;
 }
 
@@ -120,8 +122,10 @@ export default function CadastroCandidato() {
                         mensagemName: err.response.data.errors.body.name,
                         mensagemCidade: err.response.data.errors.body.cidade,
                         mensagemEstado: err.response.data.errors.body.estado,
+                        mensagemCep: "Preencha o CEP",
                         loading: false
                     })
+
                 } else {
                     setStatus({
                         type: "error",
@@ -139,6 +143,7 @@ export default function CadastroCandidato() {
                     <div className="box-form-candidato">
                         <h1>
                             Cadastre um candidato
+                            {status.loading ? <LoadingIcon/> : ""}
                         </h1>
                         <div className="box-input-candidato">
                             <div className="single-input-candidato">
@@ -158,7 +163,8 @@ export default function CadastroCandidato() {
                         </div>
                         <div className="box-input-candidato">
                             <div className="single-input-candidato">
-                                <input required id='input-cep' type="text" name="cep" className='input-sucess' placeholder="CEP" onChange={handleValueInput} />
+                                {status.type === "error" ? <label className='msg-error'>{status.mensagemCep}</label> : ""}
+                                <input required id='input-cep' type="text" name="cep" className="input-sucess" placeholder="CEP" onChange={handleValueInput} />
                             </div>
                             <div className="single-input-candidato">
                                 <input type='button' onClick={getCep} value={"Buscar CEP"} id='button-cep' />
@@ -186,7 +192,7 @@ export default function CadastroCandidato() {
                         </div>
                     </div>
                 </form>
-                <div style={{display:'none'}}>
+                <div style={{ display: 'none' }}>
                     {endereco.bairro}
                 </div>
             </div>

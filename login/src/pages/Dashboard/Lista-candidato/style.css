@@ -24,3 +24,24 @@
     background-color: #fff;
     box-shadow: 0px 0px 100px #000;
 }
+
+.container-search {
+    display: flex;
+    justify-content: center;
+    padding: 18px;
+    width: 100%;
+    align-items: center;
+}
+
+.input-search {
+    max-width: 400px;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #23A095;
+}
+
+.btn-search {
+    cursor: pointer;
+}

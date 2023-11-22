@@ -7,7 +7,7 @@
     width: 100%;
     color: #fff;
     border-radius: 10px;
-    padding: 1em;
+    padding: 4px;
     cursor: pointer;
 }
 
@@ -23,4 +23,9 @@
     align-items: center;
     text-align: center;
     padding: 5px 0px;
+    font-size: 14px;
+}
+
+.link {
+    text-decoration: none;
 }

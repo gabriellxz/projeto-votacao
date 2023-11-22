@@ -39,13 +39,18 @@ export default function Dashboard() {
                             <li>
                                 <Link to={"/dashboard/listaCandidato"} className='link'>
                                     <IconUser size={30} />
-                                    Candidatos
+                                    Votação
                                 </Link>
                             </li>
                             <li>
                                 <Link to={"/dashboard/cadastrarCandidato"} className='link'>
                                     <span>+</span>
                                     Cadastrar
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/Editar"} className='link'>
+                                    Editar
                                 </Link>
                             </li>
                         </ul>

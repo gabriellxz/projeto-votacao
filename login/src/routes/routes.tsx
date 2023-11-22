@@ -9,7 +9,9 @@ import Dashboard from '../pages/Dashboard/dashboard'
 import ListaCandidato from '../pages/Dashboard/Lista-candidato/lista-candidato'
 import CadastroCandidato from '../pages/Dashboard/Cadastro_candidato/cadastro-candidato'
 import Cadastro from '../pages/Cadastro/cadastro'
-import VotarCandidato from '../pages/VotarCandidato/votar-candidato'
+import VotarCandidato from '../pages/Dashboard/Lista-candidato/VotarCandidato/votar-candidato'
+import { Editar } from '../pages/Dashboard/Editar-cand-pesq/editar'
+import { ListaPesquisadores } from '../pages/Dashboard/Editar-cand-pesq/Lista-pesquisadores/lista-pesquisadores'
 
 // const router = createBrowserRouter([
 //     {
@@ -47,6 +49,10 @@ export default function RoutesPage() {
                         <Route path='votarCandidato/:id_candidato' element={<VotarCandidato />} />
                     </Route>
                     <Route path='cadastrarCandidato' element={<CadastroCandidato />} />
+                    <Route path='Editar' element={<Editar />}>
+                        <Route index element={<ListaPesquisadores />} />
+                        <Route path='editar/listaPesquisadores' element={<ListaPesquisadores />} />
+                    </Route>
                 </Route>
             </Routes>
         </BrowserRouter>
