@@ -90,6 +90,22 @@ input[type="file"] {
     cursor: pointer;
 }
 
+#label-file-sucess {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-variant: small-caps;
+    background-color: green;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 7px 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
 .box-candidato-btn {
     display: flex;
     width: 100%;

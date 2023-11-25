@@ -5,6 +5,8 @@ import typeCadastro from '../../models/typeCadastro'
 import api from "../../config/apiConfig"
 import { useNavigate } from 'react-router-dom'
 import LoadingIcon from '../../components/loading-icon/loading-icon'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Cadastro() {
 
@@ -68,8 +70,8 @@ export default function Cadastro() {
                         senha: err.response.data.errors.body.senha,
                     })
                     setMensagem({
-                        type: "",
-                        mensagem: "",
+                        type: "error",
+                        mensagem: "Não foi possivel registrar o usuário...",
                         loading: false
                     })
                 } else {
@@ -90,10 +92,13 @@ export default function Cadastro() {
                         <div className="container-top-cadastro">
                             <div className="title">
                                 <h1>Cadastrar Usuário</h1>
+                                <div className='msg-error'>
+                                    {mensagem.type === "error" ? <label>{mensagem.mensagem}</label> : ""}
+                                </div>
                                 <p>
                                     Insira informações do usuário
                                 </p>
-                                {mensagem.loading ? <LoadingIcon/> : ""}
+                                {mensagem.loading ? <LoadingIcon /> : ""}
                             </div>
                         </div>
 

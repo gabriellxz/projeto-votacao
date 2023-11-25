@@ -1,0 +1,31 @@
+.container-card-pesquisador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #00a9ff;
+    max-width: 200px;
+    width: 100%;
+    color: #fff;
+    border-radius: 10px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.container-card-pesquisador img {
+    border-radius: 10px 10px 0px 0px;
+    max-width: 200px;
+    width: 100%;
+}
+
+.container-nome-pesquisador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px 0px;
+    font-size: 14px;
+}
+
+.link {
+    text-decoration: none;
+}

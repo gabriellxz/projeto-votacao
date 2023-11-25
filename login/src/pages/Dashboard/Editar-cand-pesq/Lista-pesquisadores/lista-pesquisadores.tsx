@@ -1,49 +1,38 @@
-import { useEffect, useState } from "react"
+import './style.css'
+import { useState, useEffect } from 'react'
 import api from '../../../../config/apiConfig'
+import Pesquisador from '../../../../models/pesquisador'
+import CardPesquisadores from '../../../../components/Card-pesquisadores/card-pesquisadores'
+import { Outlet } from 'react-router-dom'
 
-interface Pesquisador {
-    id_pesquisador: number;
-    name: string;
-    email: string;
-    cpf: string;
-    roleId?: number;
-    senha: string
+export default function ListaPesquisadores() {
 
-}
-
-export function ListaPesquisadores() {
-
-    const [pesquisadores, setPesquisadores] = useState<Pesquisador[]>([])
-
-    const headers = {
-        "Content-Type": "application/json",
-        // "Authorization": "Bearer " + token
-    }
-
-    async function getPesquisadores() {
-        try {
-            const response = await api.get("/Pesquisadores", { headers })
-            console.log(response.data)
-            setPesquisadores(response.data)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    const [pesquisador, setPesquisador] = useState<Pesquisador[]>([])
 
     useEffect(() => {
-        getPesquisadores
-    })
+        async function getPesquisadores() {
+            const response = await api.get("/Pesquisadores")
+            try {
+                setPesquisador(response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        getPesquisadores()
+    }, [])
 
     return (
-        <>
-            <h1>Pesquisadores</h1>
-            <ul>
+        <div className='container-pesquisadores'>
+            <h1>Lista de pesquisadores</h1>
+            <div className='container-lista-pesquisador'>
                 {
-                    pesquisadores.map((item:Pesquisador) => (
-                        <li>{item.name}</li>
+                    pesquisador.map((pes: Pesquisador) => (
+                        <CardPesquisadores key={pes.id_pesquisador} pesquisador={pes} />
                     ))
                 }
-            </ul>
-        </>
+                <Outlet/>
+            </div>
+        </div>
     )
 }

@@ -5,7 +5,7 @@ import Navbar from '../../componentsSVG/navbar-icon/navbar-icon'
 import NotificationIcon from '../../componentsSVG/notification-icon/notification-icon'
 import { Link, Outlet } from 'react-router-dom'
 import logoElecao from '../../assets/img/eleicoes-logo.png'
-import { IconUser } from '@tabler/icons-react'
+import { IconEdit, IconUser } from '@tabler/icons-react'
 
 export default function Dashboard() {
 
@@ -50,6 +50,7 @@ export default function Dashboard() {
                             </li>
                             <li>
                                 <Link to={"/dashboard/Editar"} className='link'>
+                                    <IconEdit/>
                                     Editar
                                 </Link>
                             </li>

@@ -5,6 +5,7 @@ import axios from "axios"
 import logoEleicoes from '../../../assets/img/eleicoes-logo.png'
 import { useNavigate } from 'react-router-dom'
 import LoadingIcon from '../../../components/loading-icon/loading-icon'
+import { IconCheck, IconFileImport } from '@tabler/icons-react'
 
 interface Endereco {
     cep?: string;
@@ -182,7 +183,8 @@ export default function CadastroCandidato() {
                         </div>
                         <div className="box-input-candidato">
                             <input type="file" id='uploadBtn' onChange={handleImagem} />
-                            <label htmlFor='uploadBtn' id='label-file'>
+                            <label htmlFor='uploadBtn' id={imagem ? "label-file-sucess" : "label-file"}>
+                                {imagem ? <IconCheck/> : <IconFileImport/>}
                                 importar imagem
                             </label>
                         </div>
