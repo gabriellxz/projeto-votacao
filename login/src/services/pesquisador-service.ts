@@ -7,3 +7,7 @@ export function deletePesqById(id:number) {
 export function pesFindById(id: number) {
     return api.get(`/Pesquisador/${id}`)
 }
+
+export function handlePutPes(id:number) {
+    return api.put(`/Pesquisador/${id}`)
+}

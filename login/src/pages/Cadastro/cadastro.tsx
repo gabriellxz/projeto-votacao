@@ -31,6 +31,8 @@ export default function Cadastro() {
         email: "",
         name: "",
         senha: "",
+        cidade: "",
+        estado: ""
     })
 
     function handleInput(e: any) {
@@ -57,7 +59,10 @@ export default function Cadastro() {
                     mensagem: response.data.msg,
                     loading: false
                 })
-                navigate("/")
+                setTimeout(() => {
+                    navigate("/")
+                }, 3000)
+                toast.success("Pesquisador cadastrado com sucesso!")
             })
             .catch((err) => {
                 console.log(err)
@@ -68,6 +73,8 @@ export default function Cadastro() {
                         email: err.response.data.errors.body.email,
                         name: err.response.data.errors.body.name,
                         senha: err.response.data.errors.body.senha,
+                        cidade: err.response.data.errors.body.cidade,
+                        estado: err.response.data.errors.body.estado,
                     })
                     setMensagem({
                         type: "error",
@@ -121,6 +128,18 @@ export default function Cadastro() {
                                         {validation.type === "error" ? <p>{validation.senha}</p> : ""}
                                     </div>
                                 </div>
+                                <div className="box-input-cadastro" id="input-central">
+                                    <div className="input-email">
+                                        <h2>Cidade</h2>
+                                        <input required type="cidade" placeholder='Digite sua cidade' name='cidade' className='input-cadastro' id='cidade' onChange={handleInput} />
+                                        {validation.type === "error" ? <p>{validation.cidade}</p> : ""}
+                                    </div>
+                                    <div className="input-senha">
+                                        <h2>Estado</h2>
+                                        <input required type="text" placeholder='Digite seu estado' name='estado' className='input-cadastro' id='estado' onChange={handleInput} />
+                                        {validation.type === "error" ? <p>{validation.estado}</p> : ""}
+                                    </div>
+                                </div>
                                 <div className="box-input-cadastro">
                                     <h2>CPF</h2>
                                     <input required type="text" placeholder='Digite seu CPF' name='cpf' className='input-cadastro' onChange={handleInput} />
@@ -132,6 +151,7 @@ export default function Cadastro() {
                                         <ChevronRight />
                                     </button>
                                 </div>
+                                <ToastContainer />
                             </form>
                         </div>
                     </div>

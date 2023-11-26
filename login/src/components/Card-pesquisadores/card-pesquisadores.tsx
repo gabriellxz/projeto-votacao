@@ -10,7 +10,7 @@ interface PropsPesquisador {
 export default function CardPesquisadores(props: PropsPesquisador) {
     return (
         <>
-            <Link to={`/dashboard/Editar/listaPesquisadores/editarPesquisador`} className='link'>
+            <Link to={`/dashboard/Editar/listaPesquisadores/editarPesquisador/${props.pesquisador.id_Pesquisador}`} className='link'>
                 <div className="container-card-pesquisador" >
                     <div className="container-img-pesquisador">
                         <img src={avatar_icon} alt="foto_pesquisador" />

@@ -1,5 +1,5 @@
 export default interface Pesquisador {
-    id_pesquisador: number;
+    id_Pesquisador: number;
     name: string;
     email: string;
     cpf: string;

@@ -64,7 +64,7 @@ export default function RoutesPage() {
                         {/*lista de pesquisadores ---> editar ---> dashboard*/}
                         <Route path='listaPesquisadores' element={<ListaPesquisadores />}>
                             {/*editar pesquisador ---> lista de pesquisadores ---> editar ---> dashboard*/}
-                            <Route path='editarPesquisador' element={<EditarPesquisador />}/>
+                            <Route path='editarPesquisador/:id_Pesquisador' element={<EditarPesquisador />}/>
                         </Route>
                     </Route>
                 </Route>

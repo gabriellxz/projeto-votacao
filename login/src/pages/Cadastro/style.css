@@ -92,6 +92,14 @@
     width: 100%;
 }
 
+.input-cidade {
+    width: 100%;
+}
+
+.input-estado {
+    width: 100%;
+}
+
 .box-btn-cadastro {
     display: flex;
     justify-content: end;
