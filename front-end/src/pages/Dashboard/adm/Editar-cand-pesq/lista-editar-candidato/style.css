@@ -1,0 +1,8 @@
+.lista-editar-candidato {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 1em;
+}

@@ -1,0 +1,67 @@
+.container-modal-editar-candidato {
+    display: flex;
+    justify-content: space-around;
+    padding: 2em;
+}
+
+.box-bottom-infors-editar-cand {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+#label-file {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-variant: small-caps;
+    background-color: #00a9ff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 7px 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+#label-file-sucess {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-variant: small-caps;
+    background-color: green;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 7px 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.box-candidato-btn-editar {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.box-candidato-btn-editar button {
+    border-radius: 6.2px;
+    padding: 9px 15px;
+    border: none;
+    background-color: #23A095;
+    color: #fff;
+}
+
+.box-candidato-btn-editar img {
+    max-width: 100px;
+    width: 100%;
+}

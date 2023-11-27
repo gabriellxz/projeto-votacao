@@ -1,0 +1,121 @@
+.container-details {
+    display: flex;
+}
+
+.container-dados-pesquisador {
+    width: 100%;
+    padding: 4em;
+}
+
+.container-img-pesquisador-editar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 36px;
+}
+
+.container-img-pesquisador-editar img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.box-top-infors-pesquisador {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.box-bottom-infors-pesquisador {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.btn-trash {
+    cursor: pointer;
+}
+
+#partido-title {
+    color: #23A095;
+    font-weight: 700;
+}
+
+.box-top-infors p {
+    color: #23A095;
+    font-weight: 700;
+}
+
+.container-form-editar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1em;
+}
+
+.container-form-editar form {
+    width: 100%;
+}
+
+.title-form-editar {
+    text-align: center;
+    font-size: 28px;
+    color: #23A095;
+    font-variant: small-caps;
+}
+
+.box-single-editar {
+    padding: 1em;
+    width: 100%;
+}
+
+.single-editar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.single-editar label {
+    font-weight: 700;
+}
+
+.single-editar input {
+    max-width: 400px;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #23A095;
+}
+
+.single-editar input::placeholder {
+    color: #23A095;
+    font-weight: 700;
+}
+
+.box-dual {
+    display: flex;
+}
+
+.btn-editar {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-editar button {
+    border-radius: 10px;
+    border: 1px solid #23A095;
+    background: #23A095;
+    padding: 10px;
+    max-width: 145px;
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.msg {
+    text-align: center;
+}
