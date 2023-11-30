@@ -18,7 +18,7 @@ export default function Login() {
 
     const [user, setUser] = useState<typeLogin>({
         email: "",
-        senha: ""
+        senha: "",
     })
 
     const [mensagem, setMensagem] = useState({
@@ -32,7 +32,7 @@ export default function Login() {
     }
 
     function formIsValid() {
-        return user.email.trim()!== "" && user.senha.trim() !== ""
+        return user.email.trim() !== "" && user.senha.trim() !== ""
     }
 
     const headers = {
@@ -56,9 +56,14 @@ export default function Login() {
                     mensagem: response.data.msg,
                     loading: false
                 })
-                navigate("/dashboard")
                 signIn(true)
+
                 localStorage.setItem("tokenUser", JSON.stringify(response.data.acessToken))
+                localStorage.setItem("cidadeUser", JSON.stringify(response.data.cidade))
+                localStorage.setItem("estadoUser", JSON.stringify(response.data.estado))
+                localStorage.setItem("roleUser", JSON.stringify(response.data.role))
+
+                navigate("/dashboard")
             })
             .catch((err) => {
                 console.log(err)
@@ -97,7 +102,7 @@ export default function Login() {
                             {mensagem.type === "error" ? <p>{mensagem.mensagem}</p> : ""}
                         </div>
                         <div className="msg-sucess">
-                            {mensagem.loading ? <LoadingIcon/> : ""}
+                            {mensagem.loading ? <LoadingIcon /> : ""}
                         </div>
                     </div>
                     <form className="container-form" onSubmit={handlePostForm}>

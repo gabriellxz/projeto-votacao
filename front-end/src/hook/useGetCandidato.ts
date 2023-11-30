@@ -1,82 +1,32 @@
 import api from '../config/apiConfig'
 import { useEffect, useState } from 'react'
 import typeCandidato from '../models/typeCandidato'
-import axios from 'axios'
 
 export default function useGetCandidato() {
 
     const token = localStorage.getItem("tokenUser")
+    // const cidadeUser = localStorage.getItem("cidadeUser")
+    // const estadoUser = localStorage.getItem("estadoUser")
 
     const [candidato, setCandidato] = useState<typeCandidato[]>([])
-    const [valueCep, setValueCep] = useState({
-        cep: "",
-    })
-    // const [localidade, setLocalidade] = useState("")
-    // const [uf, setUf] = useState("")
-    const [filtrarCandidatos, setFiltrarCandidatos] = useState<typeCandidato[]>([])
+    // const [filtrarCandidato, setFiltrarCandidato] = useState<typeCandidato[]>([])
     const [loading, setLoading] = useState({
         type: "",
         loading: false,
         mensagem: ""
     })
 
-    function handleValueCep(e: any) {
-        setValueCep({ ...valueCep, [e.target.name]: e.target.value })
-    }
+    // function filterCandidatos() {
+    //     const filtraCandidatos = candidato.filter(
+    //         (cand:typeCandidato) => cand.cidade === cidadeUser && cand.estado === estadoUser
+    //     )
 
-    async function filterCandidatos() {
+    //     setFiltrarCandidato(filtraCandidatos)
+    // }
 
-        setLoading({
-            type: "",
-            loading: true,
-            mensagem: ""
-        })
-
-        await axios.get(`https://viacep.com.br/ws/${valueCep.cep}/json/`)
-            .then((response) => {
-                // setLocalidade(response.data.localidade)
-                // setUf(response.data.uf)
-
-                const localidade = response.data.localidade
-                const uf = response.data.uf
-
-                console.log(localidade)
-                console.log(uf)
-
-                const filtrarCandidatos = candidato.filter(
-                    (cand: typeCandidato) => cand.cidade === localidade && cand.estado === uf
-                )
-
-                setFiltrarCandidatos(filtrarCandidatos)
-                console.log(filtrarCandidatos)
-                setLoading({
-                    type: "sucess",
-                    loading: false,
-                    mensagem: ""
-                })
-            })
-            .catch((err) => {
-                if (err.response) {
-                    console.log(err)
-                    setFiltrarCandidatos([])
-                    setLoading({
-                        type: "error",
-                        loading: false,
-                        mensagem: "Erro ao buscar candidatos..."
-                    })
-                } else {
-                    setLoading({
-                        type: "error",
-                        loading: false,
-                        mensagem: "Erro ao buscar candidatos..."
-                    })
-                }
-            })
-    }
-
-    useEffect(() => {
-        filterCandidatos()
-    }, [])
+    // useEffect(() => {
+    //     filterCandidatos()
+    // }, [])
 
     const headers = {
         "Content-Type": "application/json",
@@ -87,7 +37,6 @@ export default function useGetCandidato() {
         await api.get("/Candidatos", { headers })
             .then((response) => {
                 console.log(response)
-                setFiltrarCandidatos(response.data)
                 setCandidato(response.data)
             })
             .catch((err) => {
@@ -100,11 +49,8 @@ export default function useGetCandidato() {
     }, [])
 
     return {
-        filtrarCandidatos,
         loading,
-        handleValueCep,
-        filterCandidatos,
         getCandidatos,
-        candidato
+        candidato,
     }
 }

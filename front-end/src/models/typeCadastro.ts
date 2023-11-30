@@ -3,4 +3,6 @@ export default interface typeCadastro {
     email: string;
     senha: string;
     cpf: string;
+    estado: string;
+    cidade: string;
 }

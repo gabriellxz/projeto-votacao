@@ -3,8 +3,11 @@ import api from "../config/apiConfig";
 
 export interface ContextType {
     autenticado?: boolean;
-    signIn?: (sit: boolean) => void;
+    signIn?:        (sit: boolean) => void;
     logout?: () => void;
+    // cidadeUser?: string;
+    // estadoUser?: string;
+    // roleUser?: string;
 }
 
 const Context = createContext<ContextType>({})
@@ -37,9 +40,10 @@ function AuthProvider({ children }: any) {
     function logout() {
         setAutenticado(false)
         localStorage.removeItem("tokenUser")
+        localStorage.removeItem("cidadeUser")
+        localStorage.removeItem("estadoUser")
+        localStorage.removeItem("roleUser")
         api.defaults.headers.Authorization = ""
-
-
     }
 
     // if (loading) {
