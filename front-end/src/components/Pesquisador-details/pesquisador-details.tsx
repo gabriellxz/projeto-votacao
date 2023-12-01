@@ -195,14 +195,14 @@ export default function PesquisadorDetails(props: PropsPesquisador) {
                                     <input type="text" name='cpf' placeholder='CPF do pesquisador' onChange={handleInputValue} />
                                 </div>
                             </div>
-                            <div className="box-single-editar box-dual">
-                                <div className="single-editar">
+                            <div className="box-single-editar cidadeEstado">
+                                <div className="single-editar-cidade">
                                     <label>Cidade do pesquisador</label>
-                                    <input type="text" name='cidade' placeholder='Cidade do pesquisador' onChange={handleInputValue} />
+                                    <input type="text" name='cidade' placeholder='Cidade do pesquisador' onChange={handleInputValue} id='cidadePes'/>
                                 </div>
-                                <div className="single-editar">
+                                <div className="single-editar-estado">
                                     <label>Estado do pesquisador</label>
-                                    <input type="text" name='estado' placeholder='Estado do pesquisador' onChange={handleInputValue} />
+                                    <input type="text" name='estado' placeholder='Estado do pesquisador' onChange={handleInputValue} id='estadoPes'/>
                                 </div>
                             </div>
                             <div className="btn-editar box-single-editar">

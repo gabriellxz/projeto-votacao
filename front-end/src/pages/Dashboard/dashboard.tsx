@@ -35,24 +35,24 @@ export default function Dashboard() {
                     <aside className='navbar-aside'>
                         <ul>
                             <li>
-                                <Link to={"/dashboard/listaCandidato"} className='link'>
+                                <Link to={"/dashboard/listaCandidato"} className='link' onClick={() => setOpen(!open)}>
                                     <IconUser size={30} />
                                     Votação
                                 </Link>
                             </li>
                             <li className={roleUser === "1" ? "display-none" : ""}>
-                                <Link to={"/dashboard/cadastroDashboard"} className='link'>
+                                <Link to={"/dashboard/cadastroDashboard"} className='link' onClick={() => setOpen(!open)}>
                                     <span>+</span>
                                     Cadastrar
                                 </Link>
                             </li>
                             <li className={roleUser === "1" ? "display-none" : ""}>
-                                <Link to={"/dashboard/resultados"} className='link'>
+                                <Link to={"/dashboard/resultados"} className='link' onClick={() => setOpen(!open)}>
                                     <IconArticle/>
                                     Resultados
                                 </Link>
                             </li>
-                            <li className={roleUser === "1" ? "display-none" : ""}>
+                            <li className={roleUser === "1" ? "display-none" : ""} onClick={() => setOpen(!open)}>
                                 <Link to={"/dashboard/Editar"} className='link'>
                                     <IconEdit />
                                     Editar

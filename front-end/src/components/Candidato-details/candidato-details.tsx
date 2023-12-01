@@ -72,7 +72,6 @@ export default function CandidatoDetails(props: Candidato) {
             loading: true
         })
 
-        await api.post("/Votar", dados, { headers })
         try {
             if (inputValue.nome != null && inputValue.Localidade != null && inputValue.Idade) {
                 const response = await api.post("/votar", dados, { headers })

@@ -32,7 +32,7 @@
     align-items: center;
     text-align: center;
     padding: 5px 0px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .link {
@@ -121,4 +121,47 @@
 
 .msg-error {
     color: red;
+}
+
+.container-title-list {
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+    color: #00a9ff;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#label-file {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-variant: small-caps;
+    background-color: #00a9ff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 7px 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+#label-file-sucess {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-variant: small-caps;
+    background-color: green;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 7px 10px;
+    user-select: none;
+    cursor: pointer;
 }

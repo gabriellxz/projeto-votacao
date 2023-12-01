@@ -21,8 +21,8 @@ export default function ListaCandidatoAdm() {
 
 
     const token = localStorage.getItem("tokenUser")
-    const cidadeUser = localStorage.getItem("cidadeUser")
-    const estadoUser = localStorage.getItem("estadoUser")
+    const roleUser = localStorage.getItem("roleUser")
+
 
     const headers = {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export default function ListaCandidatoAdm() {
             mensagem: ""
         })
 
-        await api.get("/Candidatos", { headers })
+        await api.get<typeCandidato[]>("/Candidatos", { headers })
             .then((response) => {
 
                 setLoading({
@@ -46,7 +46,24 @@ export default function ListaCandidatoAdm() {
                     mensagem: ""
                 })
 
+                console.log(response.data)
+
                 setCandidato(response.data)
+
+                const candidates = response.data
+
+                const cidadeUser = localStorage.getItem("cidadeUser")
+                const estadoUser = localStorage.getItem("estadoUser")
+
+                const candidatosObtidos = candidates.filter(cand => {
+                    return(
+                        cand.cidade === cidadeUser &&
+                        cand.estado  === estadoUser
+                    )
+                })
+
+                setFiltrarCandidato(candidatosObtidos)
+                console.log(candidatosObtidos)
             })
             .catch((err) => {
                 console.log(err)
@@ -70,17 +87,39 @@ export default function ListaCandidatoAdm() {
 
     return (
         <div className='container-list'>
-            <div className='container-list-candidatos'>
-
-                {
-                    loading.loading ? <LoadingIcon />
-                        :
-                        candidato.map((item: typeCandidato) => (
-                            <CardCandidato candidato={item} key={item.id_candidato} />
-                        ))
-                }
-                <Outlet />
+            <div className="container-title-list">
+                <h1>Confirme seu voto</h1>
             </div>
+            {
+                roleUser === "1" ?
+                    (
+                        <div className='container-list-candidatos'>
+
+                            {
+                                loading.loading ? <LoadingIcon />
+                                    :
+                                    filtrarCandidato.map((item: typeCandidato) => (
+                                        <CardCandidato candidato={item} key={item.id_candidato} />
+                                    ))
+                            }
+                            <Outlet />
+                        </div>
+                    )
+                    :
+                    (
+                        <div className='container-list-candidatos'>
+
+                            {
+                                loading.loading ? <LoadingIcon />
+                                    :
+                                    candidato.map((item: typeCandidato) => (
+                                        <CardCandidato candidato={item} key={item.id_candidato} />
+                                    ))
+                            }
+                            <Outlet />
+                        </div>
+                    )
+            }
         </div>
     )
 }

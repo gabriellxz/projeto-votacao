@@ -41,6 +41,9 @@ export default function ListaPesquisadores() {
 
     return (
         <div className='container-pesquisadores'>
+            <div className="container-title-list">
+                <h1>Lista de pesquisadores</h1>
+            </div>
             <div className='container-lista-pesquisador'>
                 {
                     loading.loading ?

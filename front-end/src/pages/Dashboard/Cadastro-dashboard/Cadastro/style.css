@@ -59,7 +59,7 @@
 .input-cadastro {
     width: 100%;
     border-radius: 8px;
-    padding: 10px;
+    padding: 7px 10px;
     font-size: 15px;
     border: 2px solid #E4E4E4;
     outline: none;
@@ -81,6 +81,10 @@
 }
 
 .input-senha {
+    width: 100%;
+}
+
+.input-cep {
     width: 100%;
 }
 

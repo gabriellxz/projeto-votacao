@@ -110,8 +110,6 @@ export default function CadastroCandidato() {
                 setStatus({
                     type: "sucess",
                     mensagemName: response.data,
-                    mensagemCidade: response.data,
-                    mensagemEstado: response.data,
                     loading: false
                 })
                 navigate("/dashboard/listaCandidato")
@@ -121,8 +119,6 @@ export default function CadastroCandidato() {
                     setStatus({
                         type: "error",
                         mensagemName: err.response.data.errors.body.name,
-                        mensagemCidade: err.response.data.errors.body.cidade,
-                        mensagemEstado: err.response.data.errors.body.estado,
                         mensagemCep: "Preencha o CEP",
                         loading: false
                     })
@@ -173,12 +169,14 @@ export default function CadastroCandidato() {
                         </div>
                         <div className="box-input-candidato">
                             <div className="single-input-candidato">
-                                {status.type === "error" ? <label className='msg-error'>{status.mensagemCidade}</label> : <label>Cidade</label>}
-                                <input type="text" name="cidade" className="input-sucess" placeholder="Cidade" value={cidade} />
+                                {/* {status.type === "error" ? <label className='msg-error'>{status.mensagemCidade}</label> : <label>Cidade</label>}
+                                <input type="text" name="cidade" className="input-sucess" placeholder="Cidade" value={cidade} /> */}
+                                <label>Cidade: {cidade}</label>
                             </div>
                             <div className="single-input-candidato">
-                                {status.type === "error" ? <label className='msg-error'>{status.mensagemEstado}</label> : <label>Estado</label>}
-                                <input type="text" name="estado" className="input-sucess" placeholder="Estado" value={estado} />
+                                {/* {status.type === "error" ? <label className='msg-error'>{status.mensagemEstado}</label> : <label>Estado</label>}
+                                <input type="text" name="estado" className="input-sucess" placeholder="Estado" value={estado} /> */}
+                                <label>Estado: {estado}</label>
                             </div>
                         </div>
                         <div className="box-input-candidato">

@@ -80,7 +80,7 @@ export default function RoutesPage() {
                         <Route path='votarCandidato/:id_candidato' element={<VotarCandidato />} />
                     </Route>
 
-                    <Route path='resultados' element={<Resultados />} />
+                    <Route path='resultados' element={<NivelAcess><Resultados /></NivelAcess>} />
 
                     {/*editar ---> dashboard*/}
                     <Route path='Editar' element={<NivelAcess><Editar /></NivelAcess>}>

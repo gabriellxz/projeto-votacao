@@ -11,9 +11,12 @@ export default function ListaEditarCandidato() {
 
     return (
         <div className="container-lista-editar-candidato">
+            <div className="container-title-list">
+                <h1>Lista de candidatos</h1>
+            </div>
             {/* <h1>Lista editar candidato</h1> */}
-            {loading.loading ? <LoadingIcon /> : ""}
             <div className="lista-editar-candidato">
+                {loading.loading ? <LoadingIcon /> : ""}
                 {
                     candidato.map((cand: typeCandidato) => (
                         <CardEditarCandidato candidato={cand} key={cand.id_candidato} />

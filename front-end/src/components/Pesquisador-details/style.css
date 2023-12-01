@@ -46,6 +46,10 @@
     font-weight: 700;
 }
 
+.form-editar {
+    width: 100%;
+}
+
 .container-form-editar {
     display: flex;
     justify-content: center;
@@ -81,7 +85,6 @@
 }
 
 .single-editar input {
-    max-width: 400px;
     width: 100%;
     padding: 10px 15px;
     border-radius: 10px;
@@ -89,7 +92,46 @@
     border: 1px solid #23A095;
 }
 
+.single-editar-cidade {
+    width: 50%;
+}
+
+.single-editar-estado {
+    width: 50%;
+}
+
+#cidadePes {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #23A095;
+}
+
+#estadoPes {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #23A095;
+}
+
+.cidadeEstado {
+    display: flex;
+    gap: 5px;
+}
+
 .single-editar input::placeholder {
+    color: #23A095;
+    font-weight: 700;
+}
+
+.single-editar-cidade input::placeholder {
+    color: #23A095;
+    font-weight: 700;
+}
+
+.single-editar-estado input::placeholder {
     color: #23A095;
     font-weight: 700;
 }
