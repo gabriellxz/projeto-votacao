@@ -59,6 +59,7 @@ export default function Login() {
                 signIn(true)
 
                 localStorage.setItem("tokenUser", JSON.stringify(response.data.acessToken))
+                localStorage.setItem("nomeUser", JSON.stringify(response.data.name))
                 localStorage.setItem("cidadeUser", JSON.stringify(response.data.cidade))
                 localStorage.setItem("estadoUser", JSON.stringify(response.data.estado))
                 localStorage.setItem("roleUser", JSON.stringify(response.data.role))

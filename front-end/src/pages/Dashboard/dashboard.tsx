@@ -6,6 +6,8 @@ import NotificationIcon from '../../componentsSVG/notification-icon/notification
 import { Link, Outlet } from 'react-router-dom'
 import logoElecao from '../../assets/img/eleicoes-logo.png'
 import { IconArticle, IconEdit, IconLogout, IconUser } from '@tabler/icons-react'
+import slugify from 'react-slugify'
+import avatar_icon from '../../assets/img/user_candidato.jpg'
 
 export default function Dashboard() {
 
@@ -18,6 +20,7 @@ export default function Dashboard() {
     const { autenticado, logout } = useContext(Context)
     console.log("Usuário logado: " + autenticado)
     const roleUser = localStorage.getItem("roleUser")
+    const nomeUser = localStorage.getItem("nomeUser")
 
     return (
         <>
@@ -33,6 +36,10 @@ export default function Dashboard() {
             <main className='main-dashboard'>
                 {open &&
                     <aside className='navbar-aside'>
+                        <p className='perfil-user'>
+                            <img src={avatar_icon} alt="user" />
+                            {slugify(nomeUser)}
+                        </p>
                         <ul>
                             <li>
                                 <Link to={"/dashboard/listaCandidato"} className='link' onClick={() => setOpen(!open)}>

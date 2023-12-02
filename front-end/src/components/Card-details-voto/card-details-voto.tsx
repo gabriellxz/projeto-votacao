@@ -2,12 +2,12 @@ import './style.css'
 import avatar_icon from '../../assets/img/user_candidato.jpg'
 import { CandidatoVotos } from '../../pages/Dashboard/Resultados/resultados'
 
-interface CandidatoVotosProps  {
+interface CandidatoVotosProps {
     candidatoVoto: CandidatoVotos;
     porcentagem: any;
 }
 
-export default function CardDetailsVotos(props:CandidatoVotosProps) {
+export default function CardDetailsVotos(props: CandidatoVotosProps) {
     return (
         <>
             <div className="card-details-voto">
@@ -17,7 +17,7 @@ export default function CardDetailsVotos(props:CandidatoVotosProps) {
                 <div className='box-informações-candidato'>
                     <div className='box-infor'>
                         <span>Nome: {props.candidatoVoto.name}</span>
-                        <span>Apelido: </span>
+                        <span>Apelido: {}</span>
                     </div>
                     <div className='box-infor'>
                         <span>Cidade: {props.candidatoVoto.cidade}</span>

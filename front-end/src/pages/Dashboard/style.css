@@ -84,3 +84,16 @@
 .display-none {
     display: none;
 }
+
+.perfil-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+}
+
+.perfil-user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}

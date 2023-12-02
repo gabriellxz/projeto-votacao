@@ -3,7 +3,7 @@ import api from "../config/apiConfig";
 
 export interface ContextType {
     autenticado?: boolean;
-    signIn?:        (sit: boolean) => void;
+    signIn?: (sit: boolean) => void;
     logout?: () => void;
     // cidadeUser?: string;
     // estadoUser?: string;

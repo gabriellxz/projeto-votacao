@@ -153,8 +153,25 @@ export default function CandidatoDetails(props: Candidato) {
                     </div>
                     <div className="container-infors">
                         <div className="box-bottom-infors">
-                            <p id='partido-title'>Partido</p>
-                            <p>{props.candidato.Partido}</p>
+                            <div>
+                                <p id='partido-title'>Partido</p>
+                                <p>{props.candidato.Partido}</p>
+                            </div>
+
+                            <div>
+                                <p id='partido-title'>Cidade</p>
+                                <p>{props.candidato.cidade}</p>
+                            </div>
+
+                            <div>
+                                <p id='partido-title'>Estado</p>
+                                <p>{props.candidato.estado}</p>
+                            </div>
+
+                            <div>
+                                <p id='partido-title'>Apelido</p>
+                                <p>{props.candidato.apelido}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -36,7 +36,6 @@ export default function Cadastro() {
 
     const [mensagem, setMensagem] = useState({
         type: "",
-        mensagem: "",
         loading: false
     })
 
@@ -47,7 +46,8 @@ export default function Cadastro() {
         name: "",
         senha: "",
         cidade: "",
-        estado: ""
+        estado: "",
+        mensagem: ""
     })
 
     function handleInput(e: any) {
@@ -81,7 +81,6 @@ export default function Cadastro() {
         e.preventDefault()
         setMensagem({
             type: "",
-            mensagem: "",
             loading: true
         })
 
@@ -99,7 +98,6 @@ export default function Cadastro() {
                 console.log(response.data)
                 setMensagem({
                     type: "sucess",
-                    mensagem: response.data.msg,
                     loading: false
                 })
                 setTimeout(() => {
@@ -118,16 +116,15 @@ export default function Cadastro() {
                         senha: err.response.data.errors.body.senha,
                         cidade: err.response.data.errors.body.cidade,
                         estado: err.response.data.errors.body.estado,
+                        mensagem: err.response.data.msg
                     })
                     setMensagem({
                         type: "error",
-                        mensagem: "Não foi possivel registrar o usuário...",
                         loading: false
                     })
                 } else {
                     setMensagem({
                         type: "error",
-                        mensagem: "Erro: tente mais tarde...",
                         loading: false
                     })
                 }
@@ -143,7 +140,7 @@ export default function Cadastro() {
                             <div className="title">
                                 <h1>Cadastrar pesquisador</h1>
                                 <div className='msg-error'>
-                                    {mensagem.type === "error" ? <label>{mensagem.mensagem}</label> : ""}
+                                    {validation.type === "error" ? <label>{validation.mensagem}</label> : ""}
                                 </div>
                                 <p>
                                     Insira informações do pesquisador

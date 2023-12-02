@@ -27,6 +27,12 @@
     flex-direction: column;
 }
 
+.box-bottom-infors {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+}
+
 #partido-title {
     color: #23A095;
     font-weight: 700;

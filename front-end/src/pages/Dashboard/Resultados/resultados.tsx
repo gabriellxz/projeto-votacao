@@ -2,6 +2,8 @@ import './style.css'
 import { useEffect, useState } from "react"
 import api from '../../../config/apiConfig'
 import CardDetailsVotos from '../../../components/Card-details-voto/card-details-voto';
+import typeCandidato from '../../../models/typeCandidato';
+import LoadingIcon from '../../../components/loading-icon/loading-icon';
 
 export interface CandidatoVotos {
     Votos: number;
@@ -17,6 +19,9 @@ export default function Resultados() {
     const token = localStorage.getItem("tokenUser")
     const [votosTotal, setVotosTotal] = useState<number>(0)
     const [candidatoVoto, setCandidatoVoto] = useState<CandidatoVotos[]>([])
+    const [loading, setLoading] = useState({
+        loading: false
+    })
 
     const headers = {
         "Content-Type": "application/json",
@@ -24,8 +29,18 @@ export default function Resultados() {
     }
 
     async function getVotos() {
+
+        setLoading({
+            loading: true
+        })
+
         await api.get<CandidatoVotos[]>("/Resultado", { headers })
             .then((response) => {
+
+                setLoading({
+                    loading: false
+                })
+
                 console.log(response.data)
                 const candidatoVotos = response.data
                 setCandidatoVoto(response.data)
@@ -33,6 +48,11 @@ export default function Resultados() {
                 setVotosTotal(totalVotos)
             })
             .catch((err) => {
+
+                setLoading({
+                    loading: false
+                })
+
                 console.log(err)
             })
     }
@@ -51,8 +71,10 @@ export default function Resultados() {
             </div>
             <div className="container-list-cand-votos">
                 {
+                    loading.loading ? <LoadingIcon/>
+                    :
                     candidatoVoto.map((cand: CandidatoVotos) => (
-                        <CardDetailsVotos candidatoVoto={cand} key={cand.id_candidato} porcentagem={((cand.Votos / votosTotal) * 100).toFixed(2)}/>
+                        <CardDetailsVotos candidatoVoto={cand} key={cand.id_candidato} porcentagem={((cand.Votos / votosTotal) * 100).toFixed(2)} />
                     ))
                 }
             </div>
