@@ -34,13 +34,33 @@ export default function useGetCandidato() {
     }
 
     async function getCandidatos() {
+
+        setLoading({
+            type: "",
+            loading: true,
+            mensagem: ""
+        })
+
         await api.get("/Candidatos", { headers })
             .then((response) => {
+
+                setLoading({
+                    type: "sucess",
+                    loading: false,
+                    mensagem: "sucess"
+                })
+
                 console.log(response)
                 setCandidato(response.data)
             })
             .catch((err) => {
                 console.log(err)
+
+                setLoading({
+                    type: "error",
+                    loading: false,
+                    mensagem: ""
+                })
             })
     }
 

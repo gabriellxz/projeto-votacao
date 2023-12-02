@@ -96,6 +96,7 @@ export default function Cadastro() {
         await api.post("/cadastro", dadosUser, { headers })
             .then((response) => {
                 console.log(response.data)
+                console.log(endereco)
                 setMensagem({
                     type: "sucess",
                     loading: false

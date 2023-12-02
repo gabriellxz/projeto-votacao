@@ -2,7 +2,7 @@ import './style.css'
 import { useEffect, useState } from "react"
 import api from '../../../config/apiConfig'
 import CardDetailsVotos from '../../../components/Card-details-voto/card-details-voto';
-import typeCandidato from '../../../models/typeCandidato';
+// import typeCandidato from '../../../models/typeCandidato';
 import LoadingIcon from '../../../components/loading-icon/loading-icon';
 
 export interface CandidatoVotos {
