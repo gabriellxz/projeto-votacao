@@ -28,3 +28,11 @@
     max-width: 100px;
     width: 100%;
 }
+
+@media screen and (max-width: 780px) {
+    .container-modal-editar-candidato {
+        display: flex;
+        flex-direction: column;
+        padding: 2em;
+    }
+}

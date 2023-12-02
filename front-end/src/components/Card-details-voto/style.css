@@ -9,13 +9,13 @@
     width: 100%;
     background-color: #00a9ff;
     font-size: 13px;
-    text-align: left;
 }
 
 .box-img-candidato {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .box-img-candidato span {
@@ -29,12 +29,35 @@
 }
 
 .box-informações-candidato {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    place-items: center;
+   display: flex;
+   justify-content: space-around;
+   width: 100%;
 }
 
 .box-infor {
     display: flex;
     flex-direction: column;
+}
+
+@media screen and (max-width: 580px) {
+    .card-details-voto {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 8px;
+        padding: 10px;
+        max-width: 600px;
+        width: 100%;
+        background-color: #00a9ff;
+        font-size: 13px;
+        text-align: left;
+    }
+
+    .box-informações-candidato {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+     }
 }

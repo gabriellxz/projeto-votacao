@@ -12,12 +12,12 @@ export default function CardDetailsVotos(props: CandidatoVotosProps) {
         <>
             <div className="card-details-voto">
                 <div className="box-img-candidato">
+                    <span>Nome: {props.candidatoVoto.name}</span>
                     <img src={avatar_icon} alt="foto candidato" />
                 </div>
                 <div className='box-informações-candidato'>
                     <div className='box-infor'>
-                        <span>Nome: {props.candidatoVoto.name}</span>
-                        <span>Apelido: {}</span>
+                        {/* <span>Apelido: {}</span> */}
                     </div>
                     <div className='box-infor'>
                         <span>Cidade: {props.candidatoVoto.cidade}</span>

@@ -135,6 +135,9 @@ export default function PesquisadorDetails(props: PropsPesquisador) {
             <div className="container-details">
                 <div className="container-dados-pesquisador">
                     <div className="container-img-pesquisador-editar">
+                        <div className="layout-email-mobile">
+                            <p>{props.pesquisador.email}</p>
+                        </div>
                         <img src={avatar_icon} alt="" />
                         <div className="box-top-infors-pesquisador">
                             <h2>{props.pesquisador.name}</h2>
@@ -152,8 +155,8 @@ export default function PesquisadorDetails(props: PropsPesquisador) {
                                 <p>{props.pesquisador.estado}</p>
                             </div>
                             <div>
-                                <p id='partido-title'>E-mail</p>
-                                <p>{props.pesquisador.email}</p>
+                                <p id='partido-title' className='email'>E-mail</p>
+                                <p className='email'>{props.pesquisador.email}</p>
                             </div>
                             <div>
                                 <p id='partido-title'>CPF</p>

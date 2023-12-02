@@ -27,11 +27,8 @@ export default function Dashboard() {
             <header className='header-dashboard'>
                 <div className="container-navbar-icon">
                     <Navbar openNavbar={() => setOpen(!open)} />
-                    <img src={logoElecao} alt="" />
                 </div>
-                <div className="container-btn-logout">
-                    <NotificationIcon />
-                </div>
+                <img src={logoElecao} alt="" />
             </header>
             <main className='main-dashboard'>
                 {open &&
@@ -55,7 +52,7 @@ export default function Dashboard() {
                             </li>
                             <li className={roleUser === "1" ? "display-none" : ""}>
                                 <Link to={"/dashboard/resultados"} className='link' onClick={() => setOpen(!open)}>
-                                    <IconArticle/>
+                                    <IconArticle />
                                     Resultados
                                 </Link>
                             </li>
@@ -67,7 +64,7 @@ export default function Dashboard() {
                             </li>
                             <li>
                                 <Link to={"/"} onClick={logout} className='link'>
-                                    <IconLogout/>
+                                    <IconLogout />
                                     Logout
                                 </Link>
                             </li>

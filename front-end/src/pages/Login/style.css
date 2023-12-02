@@ -156,3 +156,21 @@ input[type="checkbox"] {
     padding: 1em;
 }
 
+@media screen and (max-width: 870px) {
+    .container-background {
+        display: none;  
+    }
+
+    .container-login {
+        display: flex;
+    }
+
+    .box-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        overflow: hidden;
+        background: #FEFEFE;
+    }
+}

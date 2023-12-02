@@ -97,3 +97,15 @@
     height: 50px;
     border-radius: 50%;
 }
+
+@media screen and (max-width: 995px) {
+    .navbar-aside {
+        position: absolute;
+        height: calc(100vh - 90px);
+        background: #00a9ff;
+        padding: 1em;
+        font-size: 28px;
+        font-weight: 700;
+        color: #fff;
+    }
+}

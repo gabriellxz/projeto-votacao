@@ -78,7 +78,6 @@
 }
 
 .single-votar input {
-    max-width: 400px;
     width: 100%;
     padding: 10px 15px;
     border-radius: 10px;
@@ -110,4 +109,45 @@
 
 .msg {
     text-align: center;
+}
+
+@media screen and (max-width: 755px) {
+    .container-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-img-candidato-votar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .container-img-candidato-votar img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .container-dados-candidato {
+        width: 100%;
+        padding: 1em;
+    }
+
+    .container-form-votar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    .single-votar input {
+        width: 100%;
+        padding: 10px 15px;
+        border-radius: 10px;
+        outline: none;
+        border: 1px solid #23A095;
+    }
 }

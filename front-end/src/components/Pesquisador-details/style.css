@@ -161,3 +161,45 @@
 .msg {
     text-align: center;
 }
+
+.layout-email-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 865px) {
+    .container-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-dados-pesquisador {
+        width: 100%;
+        padding: 1em;
+    }
+
+    .container-img-pesquisador-editar img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .box-bottom-infors-pesquisador {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .email {
+        display: none;
+    }
+
+    .layout-email-mobile {
+        display: block;
+    }
+
+    .box-bottom-infors-pesquisador {
+        display: flex;
+        justify-content: space-around;
+    }
+}
