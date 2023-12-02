@@ -11,7 +11,7 @@ import LoadingIcon from '../../components/loading-icon/loading-icon'
 
 export default function Login() {
 
-    const { autenticado, signIn } = useContext(Context)
+    const { autenticado } = useContext(Context)
     console.log("Usuário logado: " + autenticado)
 
     const navigate = useNavigate()
@@ -56,7 +56,7 @@ export default function Login() {
                     mensagem: response.data.msg,
                     loading: false
                 })
-                signIn(true)
+                // signIn(true)
 
                 localStorage.setItem("tokenUser", JSON.stringify(response.data.acessToken))
                 localStorage.setItem("nomeUser", JSON.stringify(response.data.name))
