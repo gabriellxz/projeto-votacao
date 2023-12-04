@@ -1,13 +1,13 @@
 import './style.css'
-import ChevronRight from '../../../../componentsSVG/chevron-right/chevron-right'
 import { useState } from 'react'
 import typeCadastro from '../../../../models/typeCadastro'
 import api from "../../../../config/apiConfig"
 import { useNavigate } from 'react-router-dom'
-import LoadingIcon from '../../../../components/loading-icon/loading-icon'
+// import LoadingIcon from '../../../../components/loading-icon/loading-icon'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
+import LoadingIcon from '../../../../components/loading-icon/loading-icon'
 
 interface Endereco {
     cep?: string;
@@ -15,6 +15,19 @@ interface Endereco {
     bairro?: string;
     localidade?: string;
     uf?: string;
+}
+
+interface validation {
+    type?: string;
+    loading: boolean;
+    mensagem?: string;
+    name?: string;
+    email?: string;
+    senha?: string;
+    cpf?: string;
+    cep?: string;
+    cidade?: string;
+    estado?: string;
 }
 
 export default function Cadastro() {
@@ -33,21 +46,16 @@ export default function Cadastro() {
         cidade: cidade,
         estado: estado
     })
-
-    const [mensagem, setMensagem] = useState({
+    const [validation, setValidation] = useState<validation>({
         type: "",
-        loading: false
-    })
-
-    const [validation, setValidation] = useState({
-        type: "",
-        cpf: "",
-        email: "",
+        loading: false,
         name: "",
+        email: "",
         senha: "",
+        cep: "",
+        cpf: "",
         cidade: "",
-        estado: "",
-        mensagem: ""
+        estado: ""
     })
 
     function handleInput(e: any) {
@@ -79,8 +87,8 @@ export default function Cadastro() {
 
     async function handlePostForm(e: any) {
         e.preventDefault()
-        setMensagem({
-            type: "",
+
+        setValidation({
             loading: true
         })
 
@@ -95,40 +103,69 @@ export default function Cadastro() {
 
         await api.post("/cadastro", dadosUser, { headers })
             .then((response) => {
-                console.log(response.data)
-                console.log(endereco)
-                setMensagem({
-                    type: "sucess",
-                    loading: false
-                })
-                setTimeout(() => {
-                    navigate("/dashboard/Editar/listaPesquisadores")
-                }, 3000)
-                toast.success("Pesquisador cadastrado com sucesso!")
+                if (
+                    user.name !== null &&
+                    user.email !== null &&
+                    user.senha !== null &&
+                    user.cpf !== null &&
+                    user.estado !== null &&
+                    user.cidade !== null &&
+                    user.cep !== null
+                ) {
+                    console.log(response.data)
+                    console.log(endereco)
+
+                    setValidation({
+                        loading: false
+                    })
+
+                    setTimeout(() => {
+                        navigate("/dashboard/Editar/listaPesquisadores")
+                    }, 3000)
+                    toast.success("Pesquisador cadastrado com sucesso!")
+                }
             })
             .catch((err) => {
-                console.log(err)
                 if (err.response) {
-                    setValidation({
-                        type: "error",
-                        cpf: err.response.data.errors.body.cpf,
-                        email: err.response.data.errors.body.email,
-                        name: err.response.data.errors.body.name,
-                        senha: err.response.data.errors.body.senha,
-                        cidade: err.response.data.errors.body.cidade,
-                        estado: err.response.data.errors.body.estado,
-                        mensagem: err.response.data.msg
-                    })
-                    setMensagem({
-                        type: "error",
-                        loading: false
-                    })
-                } else {
-                    setMensagem({
-                        type: "error",
-                        loading: false
-                    })
-                }
+                    if (
+                        user.name === "" &&
+                        user.email === "" &&
+                        user.senha === "" &&
+                        user.cpf === "" &&
+                        user.cep === ""
+                    ) {
+                        console.log(err)
+                        setValidation({
+                            type: "null",
+                            loading: false,
+                            mensagem: "Campo obrigatório!"
+                        })
+                    } else if (
+                        (user.name.length < 3) &&
+                        (user.email.length < 6) &&
+                        (user.senha.length < 5) &&
+                        (user.cpf.length !== 11) &&
+                        (user.cep.length !== 8)
+                    ) {
+                        console.log(err)
+                        setValidation({
+                            type: "length",
+                            loading: false,
+                            name: err.response.data.errors.body.name,
+                            email: err.response.data.errors.body.email,
+                            senha: err.response.data.errors.body.senha,
+                            cpf: err.response.data.errors.body.cpf,
+                            cep: "CEP deve conter 8 caracteres"
+                        })
+                    } else {
+                        console.log(err)
+                        setValidation({
+                            type: "erro_2",
+                            loading: false,
+                            mensagem: err.response.data.msg
+                        })
+                    }
+                } 
             })
     }
 
@@ -141,12 +178,12 @@ export default function Cadastro() {
                             <div className="title">
                                 <h1>Cadastrar pesquisador</h1>
                                 <div className='msg-error'>
-                                    {validation.type === "error" ? <label>{validation.mensagem}</label> : ""}
+                                    {validation.type === "error" ? <label className='msg-error'>{validation.mensagem}</label> : ""}
+                                    {validation.type === "erro_2" ? <label className='msg-error'>{validation.mensagem}</label> : ""}
                                 </div>
                                 <p>
                                     Insira informações do pesquisador
                                 </p>
-                                {mensagem.loading ? <LoadingIcon /> : ""}
                             </div>
                         </div>
 
@@ -155,24 +192,28 @@ export default function Cadastro() {
                                 <div className="box-input-cadastro">
                                     <label>Nome completo</label>
                                     <input required type="text" placeholder='Insira o nome completo' name='name' className='input-cadastro' onChange={handleInput} />
-                                    {validation.type === "error" ? <p>{validation.name}</p> : ""}
+                                    {validation.type === "null" ? <p>{validation.mensagem}</p> : ""}
+                                    {validation.type === "length" ? <p className='msg-error'>{validation.name}</p> : ""}
                                 </div>
                                 <div className="box-input-cadastro" id="input-central">
                                     <div className="input-email">
                                         <label>E-mail</label>
                                         <input required type="email" placeholder='Digite o e-mail' name='email' className='input-cadastro' id='email' onChange={handleInput} />
-                                        {validation.type === "error" ? <p>{validation.email}</p> : ""}
+                                        {validation.type === "null" ? <p>{validation.mensagem}</p> : ""}
+                                        {validation.type === "length" ? <p className='msg-error'>{validation.email}</p> : ""}
                                     </div>
                                     <div className="input-senha">
                                         <label>Senha</label>
                                         <input required type="text" placeholder='Insira a senha' name='senha' className='input-cadastro' id='senha' onChange={handleInput} />
-                                        {validation.type === "error" ? <p>{validation.senha}</p> : ""}
+                                        {validation.type === "null" ? <p>{validation.mensagem}</p> : ""}
+                                        {validation.type === "length" ? <p className='msg-error'>{validation.senha}</p> : ""}
                                     </div>
                                 </div>
                                 <div className="box-input-cadastro" id="input-central">
                                     <div className="input-cep">
                                         <input required type="text" placeholder='Digite o CEP' name='cep' className='input-cadastro' id='cep' onChange={handleInput} />
-                                        {/* {validation.type === "error" ? <p>{validation.cep}</p> : ""} */}
+                                        {validation.type === "null" ? <p>{validation.mensagem}</p> : ""}
+                                        {validation.type === "length" ? <p className='msg-error'>{validation.cep}</p> : ""}
                                     </div>
                                     <div className="input-senha">
                                         <button onClick={getCep} id='button-cep'>Buscar CEP</button>
@@ -189,12 +230,12 @@ export default function Cadastro() {
                                 <div className="box-input-cadastro">
                                     <label>CPF</label>
                                     <input required type="text" placeholder='Digite o CPF' name='cpf' className='input-cadastro' onChange={handleInput} />
-                                    {validation.type === "error" ? <p>{validation.cpf}</p> : ""}
+                                    {validation.type === "null" ? <p>{validation.mensagem}</p> : ""}
+                                    {validation.type === "length" ? <p className='msg-error'>{validation.cpf}</p> : ""}
                                 </div>
                                 <div className="box-btn-cadastro">
                                     <button onClick={handlePostForm} className='btn-cadastro'>
-                                        Fazer cadastro
-                                        <ChevronRight />
+                                        {validation.loading ? <LoadingIcon /> : <p>Fazer cadastro</p>}
                                     </button>
                                 </div>
                                 <ToastContainer />

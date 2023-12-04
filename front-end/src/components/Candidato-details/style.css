@@ -34,12 +34,12 @@
 }
 
 #partido-title {
-    color: #23A095;
+    color: #52AE35;
     font-weight: 700;
 }
 
 .box-top-infors p {
-    color: #23A095;
+    color: #52AE35;
     font-weight: 700;
 }
 
@@ -58,7 +58,7 @@
 .title-form-votar {
     text-align: center;
     font-size: 28px;
-    color: #23A095;
+    color: #52AE35;
     font-variant: small-caps;
 }
 
@@ -82,11 +82,11 @@
     padding: 10px 15px;
     border-radius: 10px;
     outline: none;
-    border: 1px solid #23A095;
+    border: 1px solid #52AE35;
 }
 
 .single-votar input::placeholder {
-    color: #23A095;
+    color: #52AE35;
     font-weight: 700;
 }
 
@@ -97,8 +97,8 @@
 
 .btn-votar button {
     border-radius: 10px;
-    border: 1px solid #23A095;
-    background: #23A095;
+    border: 1px solid #52AE35;
+    background: #52AE35;
     padding: 10px;
     max-width: 145px;
     width: 100%;
@@ -148,6 +148,6 @@
         padding: 10px 15px;
         border-radius: 10px;
         outline: none;
-        border: 1px solid #23A095;
+        border: 1px solid #52AE35;
     }
 }

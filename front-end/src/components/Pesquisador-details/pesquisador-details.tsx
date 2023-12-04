@@ -19,12 +19,12 @@ export default function PesquisadorDetails(props: PropsPesquisador) {
     const params = useParams()
     const navigate = useNavigate()
     const [editPes, setEditPes] = useState({
-        name: "",
-        email: "",
+        name: props.pesquisador.name,
+        email: props.pesquisador.email,
         senha: "",
-        cpf: "",
-        cidade: "",
-        estado: ""
+        cpf: props.pesquisador.cpf,
+        cidade: props.pesquisador.cidade,
+        estado: props.pesquisador.estado
     })
     const [loading, setLoading] = useState({
         type: "",
@@ -81,6 +81,7 @@ export default function PesquisadorDetails(props: PropsPesquisador) {
                     mensagem: "Preencha os campos corretamente",
                     loading: false
                 })
+                toast.error("Preencha os campos corretamente")
             }
         } catch (err) {
             console.log(err)
@@ -89,7 +90,6 @@ export default function PesquisadorDetails(props: PropsPesquisador) {
                 mensagem: "Erro: tente mais tarde...",
                 loading: false
             })
-            toast.error("Erro ao deletar pesquisador...")
         }
 
     }
@@ -177,35 +177,35 @@ export default function PesquisadorDetails(props: PropsPesquisador) {
                             <div className="box-single-editar">
                                 <div className="single-editar">
                                     <label>Nome do Pesquisador</label>
-                                    <input type="text" name='name' placeholder='Nome do pesquisador' onChange={handleInputValue} />
+                                    <input type="text" name='name' placeholder='Nome do pesquisador' value={editPes.name} onChange={handleInputValue} />
                                 </div>
                             </div>
                             <div className="box-single-editar">
                                 <div className="single-editar">
                                     <label>E-mail do pesquisador</label>
-                                    <input type="email" name='email' placeholder='E-mail do pesquisador' onChange={handleInputValue} />
+                                    <input type="email" name='email' placeholder='E-mail do pesquisador' value={editPes.email} onChange={handleInputValue} />
                                 </div>
                             </div>
                             <div className="box-single-editar">
                                 <div className="single-editar">
                                     <label>Senha do pesquisador</label>
-                                    <input type="text" name='senha' placeholder='Senha do pesquisador' onChange={handleInputValue} />
+                                    <input type="text" name='senha' placeholder='Confirme ou altere a senha' onChange={handleInputValue} />
                                 </div>
                             </div>
                             <div className="box-single-editar">
                                 <div className="single-editar">
                                     <label>CPF do pesquisador</label>
-                                    <input type="text" name='cpf' placeholder='CPF do pesquisador' onChange={handleInputValue} />
+                                    <input type="text" name='cpf' placeholder='CPF do pesquisador' value={editPes.cpf} onChange={handleInputValue} />
                                 </div>
                             </div>
                             <div className="box-single-editar cidadeEstado">
                                 <div className="single-editar-cidade">
                                     <label>Cidade do pesquisador</label>
-                                    <input type="text" name='cidade' placeholder='Cidade do pesquisador' onChange={handleInputValue} id='cidadePes'/>
+                                    <input type="text" name='cidade' placeholder='Cidade do pesquisador' value={editPes.cidade} onChange={handleInputValue} id='cidadePes'/>
                                 </div>
                                 <div className="single-editar-estado">
                                     <label>Estado do pesquisador</label>
-                                    <input type="text" name='estado' placeholder='Estado do pesquisador' onChange={handleInputValue} id='estadoPes'/>
+                                    <input type="text" name='estado' placeholder='Estado do pesquisador' value={editPes.estado} onChange={handleInputValue} id='estadoPes'/>
                                 </div>
                             </div>
                             <div className="btn-editar box-single-editar">

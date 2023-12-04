@@ -19,11 +19,11 @@ export default function ModalEditarCandidato(props: PropsCandidato) {
     const params = useParams()
     const navigate = useNavigate()
     const [valueInput, setValueInput] = useState({
-        name: "",
-        apelido: "",
-        cidade: "",
-        estado: "",
-        Partido: "",
+        name: props.candidato.name,
+        apelido: props.candidato.apelido,
+        cidade: props.candidato.cidade,
+        estado: props.candidato.estado,
+        Partido: props.candidato.Partido,
     })
     const [imagem, setImagem] = useState<File | null>(null)
     const [loading, setLoading] = useState({
@@ -182,17 +182,17 @@ export default function ModalEditarCandidato(props: PropsCandidato) {
                     <div className="box-input-candidato">
                         <div className="single-input-candidato">
                             <label>Nome</label>
-                            <input type="text" name="name" className="input-sucess" placeholder="Nome" onChange={handleInputValue} />
+                            <input type="text" name="name" className="input-sucess" value={valueInput.name} placeholder="Nome" onChange={handleInputValue} />
                         </div>
                         <div className="single-input-candidato">
                             <label>Apelido</label>
-                            <input type="text" name="apelido" className='input-sucess' placeholder="Apelido" onChange={handleInputValue} />
+                            <input type="text" name="apelido" className='input-sucess' value={valueInput.apelido} placeholder="Apelido" onChange={handleInputValue} />
                         </div>
                     </div>
                     <div className="box-input-candidato">
                         <div className="single-input-candidato">
                             <label>Partido</label>
-                            <input type="text" name="Partido" className='input-sucess' placeholder="Partido" onChange={handleInputValue} />
+                            <input type="text" name="Partido" className='input-sucess' value={valueInput.Partido} placeholder="Partido" onChange={handleInputValue} />
                         </div>
                     </div>
                     {/* <div className="box-input-candidato">
@@ -206,11 +206,11 @@ export default function ModalEditarCandidato(props: PropsCandidato) {
                     <div className="box-input-candidato">
                         <div className="single-input-candidato">
                             <label>Cidade</label>
-                            <input type="text" name="cidade" className="input-sucess" placeholder="Cidade" onChange={handleInputValue} />
+                            <input type="text" name="cidade" className="input-sucess" value={valueInput.cidade} placeholder="Cidade" onChange={handleInputValue} />
                         </div>
                         <div className="single-input-candidato">
                             <label>Estado</label>
-                            <input type="text" name="estado" className="input-sucess" placeholder="Estado" onChange={handleInputValue} />
+                            <input type="text" name="estado" className="input-sucess" value={valueInput.estado} placeholder="Estado" onChange={handleInputValue} />
                         </div>
                     </div>
                     <div className="box-input-candidato">
