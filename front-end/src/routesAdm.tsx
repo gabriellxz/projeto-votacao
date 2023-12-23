@@ -10,7 +10,7 @@ export function CustomRoutes({ children }: Props) {
     // const { autenticado } = useContext(Context)
     const tokenValidation = localStorage.getItem("tokenUser")
 
-    if (tokenValidation === undefined || tokenValidation === null || tokenValidation === "") {
+    if (!tokenValidation) {
         return <Navigate to={"/"} />
     }
 
