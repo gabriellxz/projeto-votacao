@@ -1,6 +1,5 @@
 .container-login {
     display: flex;
-    flex-direction: row-reverse;
 }
 
 .box-right {
