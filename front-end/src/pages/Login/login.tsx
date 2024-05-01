@@ -99,11 +99,13 @@ export default function Login() {
                     </div>
                     <div className="container-title">
                         <h1>Fazer login</h1>
-                        <div className="msg-error">
-                            {mensagem.type === "error" ? <p>{mensagem.mensagem}</p> : ""}
-                        </div>
-                        <div className="msg-sucess">
-                            {mensagem.loading ? <LoadingIcon /> : ""}
+                        <div>
+                            <div className="msg-error">
+                                {mensagem.type === "error" ? <p>{mensagem.mensagem}</p> : ""}
+                            </div>
+                            <div className="msg-sucess">
+                                {mensagem.loading ? <LoadingIcon /> : ""}
+                            </div>
                         </div>
                     </div>
                     <form className="container-form" onSubmit={handlePostForm}>
